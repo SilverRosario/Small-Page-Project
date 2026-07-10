@@ -138,3 +138,25 @@ body.dark-mode #header {
     text-decoration: underline;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 6px 10px;
+    color:white;
+    text-decoration:none;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.info {
+    background-color: rgb(159, 149, 149);
+    max-width: 1040px;
+    margin: 30px auto;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    margin-left: 150px;
+}
