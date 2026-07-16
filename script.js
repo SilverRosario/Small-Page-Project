@@ -50,3 +50,13 @@ window.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.body.classList.add(savedTheme + '-mode');
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('about.txt')
+        .then(response => response.text())
+        .then(text => {
+            const about = document.getElementById('about-text');
+            if (about) about.textContent = text;
+        })
+        .catch(error => console.error('Failed to load about.txt', error));
+});
