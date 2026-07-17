@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('about.txt')
+    fetch(`about.txt?ts=${Date.now()}`)
         .then(response => response.text())
         .then(text => {
             const about = document.getElementById('about-text');
