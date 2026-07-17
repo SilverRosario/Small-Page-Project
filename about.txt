@@ -1,1 +1,1 @@
-This is an exmaple of loading text from a file using javascript.
+This is an example of loading text from a file using javascript.

@@ -24,17 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const showcaseList = document.getElementById('showcase-list');
-    if (!showcaseList) return;
+const showcaseList = document.getElementById('showcase-list');
+if (!showcaseList) return;
 
-    // Image list from collection folder
-    const images = ['chen.jpg', 'Marisa.png', 'Suwako.png'];
-    
-    images.forEach((fileName) => {
-        const img = document.createElement('img');
-        img.src = `collection/${fileName}`;
-        img.alt = fileName;
-        showcaseList.appendChild(img);
+// Image list from collection folder
+fetch('/images')
+    .then((response) => response.json())
+    .then((images) => {
+        images.forEach((fileName) => {
+            const img = document.createElement('img');
+            img.src = `collection/${fileName}`;
+            img.alt = fileName;
+            showcaseList.appendChild(img);
+        });
+    })
+    .catch((error) => {
+        console.error('Error fetching images:', error);
     });
 });
 
