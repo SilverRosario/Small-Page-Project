@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (image) {
         image.tabIndex = 0;
 
-        const audio = new Audio('se_cat01.ogg');
+        const audio = new Audio('/static/se_cat01.ogg');
         audio.preload = 'auto';
 
         function playSound() {
@@ -33,7 +33,7 @@ fetch('/images')
     .then((images) => {
         images.forEach((fileName) => {
             const img = document.createElement('img');
-            img.src = `collection/${fileName}`;
+            img.src = `/static/collection/${fileName}`;
             img.alt = fileName;
             showcaseList.appendChild(img);
         });
@@ -56,12 +56,13 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.classList.add(savedTheme + '-mode');
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    fetch(`about.txt?ts=${Date.now()}`)
-        .then(response => response.text())
-        .then(text => {
-            const about = document.getElementById('about-text');
-            if (about) about.textContent = text;
-        })
-        .catch(error => console.error('Failed to load about.txt', error));
-});
+async function loadSection(sectionName, elementId) {
+    const response = await fetch(`/content/${sectionName}`);
+    const data = await response.json();
+    document.getElementById(elementId).textContent = data.text;
+}
+
+loadSection('about', 'about-text');
+loadSection('projects', 'projects-text');
+loadSection('languages', 'languages-text');
+loadSection('contact', 'contact-text');
