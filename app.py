@@ -16,7 +16,7 @@ def read_root():
 
 @app.get("/content/{name}")
 def get_content(name: str):
-    file_path = BASE_DIR / f"{name}.txt"
+    file_path = BASE_DIR / "text" /f"{name}.txt"
     if not file_path.exists():
         return JSONResponse(status_code=404, content={"error": "File not found"})
     return {"text": file_path.read_text(encoding="utf-8")}
